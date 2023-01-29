@@ -1,0 +1,29 @@
+import React from "react";
+import { Card } from "./cards";
+import { Link } from "react-router-dom";
+function Header() {
+  return (
+    <div>
+      <header className="text-gray-600 body-font bg-blue-800">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <Link
+            class="flex title-font font-large items-center text-white mb-0 md:mb-0"
+            to="/home"
+          >
+            <span class=" ml-10 text-xl">Home</span>
+          </Link>
+          <nav className="md:ml-auto flex flex-wrap items-center  justify-center">
+            <Link
+              class="flex title-font font-large items-center text-white mb-0 md:mb-0"
+              to="/bookmarks"
+            >
+              <span class=" ml-10 text-xl">Bookmarks</span>
+            </Link>
+          </nav>
+        </div>
+      </header>
+      <Card />
+    </div>
+  );
+}
+export default Header;
