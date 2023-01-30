@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Header from "./components/header";
 import Bookmark from "./components/bookmarks";
 import { Card } from "./components/cards";
 

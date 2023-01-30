@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "./cards";
 import { Link } from "react-router-dom";
 function Header() {
   return (

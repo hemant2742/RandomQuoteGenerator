@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "./header";
+import swal from "sweetalert";
 
 const bookmarked = [];
 
@@ -33,19 +34,25 @@ function Card() {
       });
   };
 
-  let fetchTaggedQuote = (tag) => {
-    fetch(`https://api.quotable.io/random?tags=${tag}`)
-      .then((res) => res.json())
-      .then((quote) => {
-        setQuote(quote.content);
-        setAuthor(quote.author);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // let fetchTaggedQuote = (tag) => {
+  //   fetch(`https://api.quotable.io/random?tags=${tag}`)
+  //     .then((res) => res.json())
+  //     .then((quote) => {
+  //       setQuote(quote.content);
+  //       setAuthor(quote.author);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   const handleBookmark = () => {
     bookmarked.push({ quote: quote, author: author });
+    swal({
+      title: "Great!",
+      text: "Your Quote has been Bookmarked!",
+      icon: "success",
+      button: "Aww yiss!",
+    });
   };
 
   return (
@@ -88,7 +95,7 @@ function Card() {
                 className="bg-green-500 hover:bg-green-800 Shadow-3xl text-white font-bold py-2 px-4 my-12 rounded-full  justify-center"
                 onClick={fetchNewQuote}
               >
-                Generate New Quote
+                Next Quote
               </button>
             </div>
           </div>
