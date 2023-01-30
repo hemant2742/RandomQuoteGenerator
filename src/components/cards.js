@@ -9,20 +9,26 @@ function Card() {
   // http://api.quotable.io/random
 
   useEffect(() => {
-    fetch("http://api.quotable.io/random")
+    fetch("https://api.quotable.io/random")
       .then((res) => res.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
   let fetchNewQuote = () => {
-    fetch("http://api.quotable.io/random")
+    fetch("https://api.quotable.io/random")
       .then((res) => res.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -50,7 +56,7 @@ function Card() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-6 h-6"
+                    class="w-6 h-6 hover:fill-current"
                   >
                     <path
                       stroke-linecap="round"
