@@ -8,6 +8,8 @@ const bookmarked = [];
 function Card() {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
+  const [tags, setTags] = useState([]);
+  const [selectedTag, setSelectedTag] = useState("");
   // http://api.quotable.io/random
 
   useEffect(() => {
@@ -22,8 +24,19 @@ function Card() {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("https://api.quotable.io/tags")
+      .then((res) => res.json())
+      .then((tag) => {
+        setTags(tag);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   let fetchNewQuote = () => {
-    fetch("https://api.quotable.io/random")
+    fetch(`https://api.quotable.io/random?tags=${selectedTag}`)
       .then((res) => res.json())
       .then((quote) => {
         setQuote(quote.content);
@@ -34,27 +47,16 @@ function Card() {
       });
   };
 
-  // let fetchTaggedQuote = (tag) => {
-  //   fetch(`https://api.quotable.io/random?tags=${tag}`)
-  //     .then((res) => res.json())
-  //     .then((quote) => {
-  //       setQuote(quote.content);
-  //       setAuthor(quote.author);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  console.log(selectedTag);
   const handleBookmark = () => {
     bookmarked.push({ quote: quote, author: author });
     swal({
       title: "Great!",
       text: "Your Quote has been Bookmarked!",
       icon: "success",
-      button: "Aww yiss!",
+      button: "OK!",
     });
   };
-
   return (
     <>
       <Header />
@@ -91,8 +93,37 @@ function Card() {
             </div>
 
             <div className=" flex flex-col items-center">
+              <div class="flex justify-center">
+                <div class="mb-3 xl:w-96">
+                  <select
+                    class="form-select appearance-none
+      block
+      w-full
+      mt-5
+      px-3
+      py-1
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    aria-label="Default select example"
+                    onChange={(e) => setSelectedTag(e.target.value)}
+                  >
+                    <option selected>Select tag to filter</option>
+
+                    {tags.map((tag) => (
+                      <option value={tag.name}>{tag.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
               <button
-                className="bg-green-500 hover:bg-green-800 Shadow-3xl text-white font-bold py-2 px-4 my-12 rounded-full  justify-center"
+                className="bg-green-500 hover:bg-green-800 Shadow-3xl text-white font-bold py-2 px-4  rounded-full  justify-center"
                 onClick={fetchNewQuote}
               >
                 Next Quote

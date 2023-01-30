@@ -9,12 +9,12 @@ function Bookmark() {
     <>
       <Header />
 
-      <div className="px-5 py-28  flex  h-screen  justify-center bg-gradient-to-r from-[#2E2282] to-[#5E2AB2]">
+      <div className="px-5 py-28  flex  h-auto  justify-center bg-gradient-to-r from-[#2E2282] to-[#5E2AB2]">
         {bookmarked.length > 0 ? (
           <div className=" flex flex-wrap    ">
             {bookmarked.map(({ quote, author }) => (
               <div className="p-6  md:w-full">
-                <div className="flex  rounded-2xl p-8 sm:flex-row flex-col bg-[#D05252]">
+                <div className="flex  rounded-2xl p-6 sm: flex-col bg-[#D05252]">
                   <div className="flex-grow text-center text-white">
                     <h2 className="text-lg title-font font-medium mb-6">
                       {quote}
