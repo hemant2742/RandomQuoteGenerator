@@ -10,20 +10,26 @@ function Card() {
   // http://api.quotable.io/random
 
   useEffect(() => {
-    fetch("http://api.quotable.io/random")
+    fetch("https://api.quotable.io/random")
       .then((res) => res.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
   let fetchNewQuote = () => {
-    fetch("http://api.quotable.io/random")
+    fetch("https://api.quotable.io/random")
       .then((res) => res.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -85,33 +91,6 @@ function Card() {
                 Generate New Quote
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-                <button onClick={handleBookmark}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-6 h-6"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <button
-              className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 my-12 rounded-full  justify-center"
-              onClick={fetchNewQuote}
-            >
-              Generate New Quote
-            </button>
           </div>
         </div>
       </div>
