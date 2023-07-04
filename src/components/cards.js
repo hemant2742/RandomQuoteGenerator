@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "./header";
-import swal from "sweetalert";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Droppdown from "./dropdown";
 
-const bookmarked = [];
+const storedBookmarks = localStorage.getItem("bookmarked");
+const bookmarked = storedBookmarks ? JSON.parse(storedBookmarks) : [];
 
 function Card() {
   const [quote, setQuote] = useState("");
@@ -64,17 +66,23 @@ function Card() {
   // console.log(selectedTagst);
   const handleBookmark = () => {
     bookmarked.push({ quote: quote, author: author });
-    swal({
-      title: "Great!",
-      text: "Quote has been Bookmarked!",
-      icon: "success",
-      button: "OK!",
+    localStorage.setItem("bookmarked", JSON.stringify(bookmarked));
+
+    toast.success("Quote has been bookmarked!", {
+      position: "bottom-left",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
     });
   };
   return (
     <>
       <Header />
-      <div className="px-5 py-28  flex h-screen  justify-center bg-gradient-to-r from-[#2E2282] to-[#5E2AB2]">
+      <div className="px-5 py-28  flex h-screen  justify-center">
         <div className=" flex flex-wrap     ">
           <div className="p-4  md:w-full">
             <div className="flex  rounded-3xl p-3 sm:flex-row flex-col bg-[#D05252]">
@@ -124,6 +132,7 @@ function Card() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }

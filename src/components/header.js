@@ -1,29 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <div>
-      <header className="text-gray-600 body-font bg-gradient-to-r from-[#2E2283] to-[#5829AD]">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <header className="text-gray-600 body-font">
+       
+
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
           <Link
-            class="flex  font-large items-center text-white mb-0 md:mb-0"
+            className="flex font-large items-center text-white mb-0 md:mb-0"
             to="/home"
           >
-            <span class=" ml-10 text-3xl font-serif  hover:text-blue">
+            <span className="ml-10 text-3xl font-serif hover:scale-110">
               Home
             </span>
           </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center  justify-center">
+          <nav className="md:ml-auto flex flex-wrap items-center justify-center">
             <Link
-              class="flex title-font font-large items-center text-white mb-0 md:mb-0"
+              className="flex title-font font-large items-center text-white mb-0 md:mb-0"
               to="/bookmarks"
             >
-              <span class=" ml-10 text-3xl font-serif ">Bookmarks</span>
+              <span className="ml-10 text-3xl font-serif hover:scale-110">
+                Bookmarks
+              </span>
             </Link>
           </nav>
         </div>
+       
       </header>
+      
     </div>
+    
   );
 }
+
 export default Header;
