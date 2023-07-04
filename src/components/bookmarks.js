@@ -12,15 +12,18 @@ function Bookmark() {
     toast.success("Quote has been Removed!", {
       position: "bottom-left",
       autoClose: 4000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,
       theme: "dark",
       onClose: () => {
-        setTimeout(() => window.location.reload(), 4000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       },
+     
     });
     
   };
