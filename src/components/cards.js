@@ -87,8 +87,8 @@ function Card() {
   return (
     <>
       <Header />
-      <div className="px-5 py-28 flex h-screen justify-center">
-        <div className="flex flex-wrap">
+      <div className=" flex h-screen items-center  justify-center">
+        <div className="flex flex-wrap justify-center">
           <div className="p-4 md:w-full">
             {isLoading ? ( 
               // Conditional rendering based on isLoading state
@@ -97,8 +97,8 @@ function Card() {
                 <ThreeDots color="#D05252" height={80} width={80} />
               </div>
             ) : (
-              <div className="flex rounded-3xl p-3 sm:flex-row flex-col bg-[#D05252]">
-                <div className="flex-grow text-center text-white">
+              <div className="flex rounded-3xl p-3 sm:flex-row flex-col   bg-[#D05252]">
+                <div className="flex-grow text-center text-white ">
                   <h2 className="text-lg title-font font-medium mb-6 text-center">
                     {quote}
                   </h2>
@@ -144,8 +144,8 @@ function Card() {
             </div>
           </div>
         </div>
-      </div>
       <ToastContainer />
+      </div>
     </>
   );
 }
