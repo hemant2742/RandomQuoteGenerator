@@ -25,6 +25,15 @@ function Header() {
                 Bookmarks
               </span>
             </Link>
+
+            <Link
+              className="flex title-font font-large items-center text-white mb-0 md:mb-0"
+              to="/open_in_whatsapp"
+            >
+              <span className="ml-10 text-3xl font-serif hover:scale-110">
+                OpenInWhatsapp
+              </span>
+            </Link>
           </nav>
         </div>
        
