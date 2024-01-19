@@ -7,7 +7,7 @@ import Droppdown from "./dropdown";
 import { ThreeDots } from "react-loader-spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhatsapp, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { Tooltip } from 'react-tooltip';
+
 
 
 
@@ -91,7 +91,6 @@ function Card() {
       theme: "dark",
     });
   };
-  Tooltip.rebuild();
   return (
     <>
       <Header />
@@ -186,7 +185,7 @@ function Card() {
         </div>
       </div>
       <ToastContainer />
-      <Tooltip effect="solid" />
+
 
     </>
   );
